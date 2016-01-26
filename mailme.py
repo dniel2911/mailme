@@ -3,9 +3,13 @@ from email.MIMEMultipart import MIMEMultipart
 from email.MIMEText import MIMEText
 from email.MIMEBase import MIMEBase
 from email import encoders
- 
-fromaddr = #EMAIL_ADDRESS
-toaddr = #EMAIL_ADDRESS
+from ConfigParser import SafeConfigParser
+
+parser = SafeConfigParser()
+parser.read('config.ini')
+
+fromaddr = parser.get('email', 'fromaddr')
+toaddr = parser.get('email', 'toaddr')
 
 message = MIMEMultipart()
 
